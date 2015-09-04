@@ -1,5 +1,5 @@
 import {NgFor, Component, View, bootstrap} from "angular2/angular2";
-import {Http} from "angular2/http";
+import {Http} from "http/http";
 
 const REPOS = `https://api.github.com/users/angular/repos`;
 

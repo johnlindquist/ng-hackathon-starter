@@ -1,12 +1,7 @@
-import 'reflect-metadata';
-import 'es6-shim';
-import "zone.js";
-
-import {Component, View, bootstrap, NgFor} from "angular2/angular2";
-import {httpInjectables} from "angular2/http";
-import {HashLocationStrategy, LocationStrategy, Router, RouterLink, RouteConfig, RouterOutlet, routerInjectables} from "angular2/router";
+import {CORE_DIRECTIVES, Component, View, bootstrap} from "angular2/angular2";
+import {HTTP_BINDINGS} from "http/http";
+import {ROUTER_BINDINGS, HashLocationStrategy, LocationStrategy, Router, RouterLink, RouteConfig, RouterOutlet} from "angular2/router";
 import {bind, Injectable} from "angular2/di";
-import {EventEmitter, ObservableWrapper} from 'angular2/src/facade/async';
 
 
 import Home from "./home";
@@ -20,7 +15,7 @@ import RepoList from "./repo-list";
     selector: "app"
 })
 @View({
-    directives: [RouterOutlet, RouterLink],
+    directives: [CORE_DIRECTIVES, RouterOutlet, RouterLink],
     template: `
         <nav>
             <a [router-link]="['/home']">Home</a>
@@ -34,8 +29,8 @@ import RepoList from "./repo-list";
 class App {}
 
 bootstrap(App, [
-    httpInjectables,
-    routerInjectables,
+    HTTP_BINDINGS,
+    ROUTER_BINDINGS,
     bind(LocationStrategy).toClass(HashLocationStrategy)
 ]).then(
         success => console.log(`Bootstrap success`),
